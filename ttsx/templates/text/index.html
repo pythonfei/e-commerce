@@ -1,0 +1,325 @@
+{%extends 'text/base.html'%}
+{%block cart%}
+        <div class="guest_cart fr">
+            <a href="{%url 'main:index'%}" class="cart_name fl">我的购物车</a>
+            <div class="goods_count fl" id="show_count">{{goods_count}}</div>
+        </div>
+        {%endblock cart%}
+{%block content%}
+		<div class="navbar_con">
+        <div class="navbar">
+            <h1 class="fl">全部商品分类</h1>
+            <ul class="navlist fl">
+                <li><a href="{%url 'main:index'%}">首页</a></li>
+                <li class="interval">|</li>
+            <li><a href="{%url 'main:place_order'%}">手机生鲜</a></li>
+                <li class="interval">|</li>
+            <li><a href="">抽奖</a></li>
+            </ul>
+        </div>
+    </div>
+{%block left%}
+{%load static from staticfiles%}
+
+	<div class="center_con clearfix">
+		<ul class="subnav fl">
+			{%for list in goods_list%}
+			<li><a href="#model0{{list.id}}" class="{{list.goods_list_class}}">{{list.goods_list_name}}</a></li>
+			{%endfor%}
+		</ul>
+		<div class="slide fl">
+			<ul class="slide_pics">
+				<li>
+				<img src="{%static 'text/images/slide.jpg'%}" alt="幻灯片">
+				<!-- <img src="/static/{{data.goods_list_pic}}" alt="幻灯片"> --></li>
+				<!-- <li><img src="{%static 'text/images/slide01.jpg'%}" alt="幻灯片"></li> -->
+
+				<li><img src="{%static 'text/images/slide02.jpg'%}" alt="幻灯片"></li>
+				<li><img src="{%static 'text/images/slide03.jpg'%}" alt="幻灯片"></li>
+				<li><img src="{%static 'text/images/slide04.jpg'%}" alt="幻灯片"></li>
+			</ul>
+			<div class="prev"></div>
+			<div class="next"></div>
+			<ul class="points"></ul>
+		</div>
+		<div class="adv fl">
+			<a href="/"><img src="{%static 'text/images/adv01.jpg'%}" alt="广告"></a>
+			<a href="/"><img src="{%static 'text/images/adv01.jpg'%}" alt="广告"></a>
+		</div>
+	</div>
+
+	<div class="list_model">
+		<div class="list_title clearfix">
+			<h3 class="fl" id="model01">{{fruit.goods_list_name}}</h3>
+			<div class="subtitle fl">
+				<span>|</span>
+				{%for name in fruit_show%}
+				<a href="{%url 'main:detail' name.id%}">{{name.goods_name}}</a>
+				{%endfor%}
+			</div>
+			<a href="{%url 'main:list' fruit.id%}" class="goods_more fr" id="fruit_more">查看更多 ></a>
+		</div>
+
+		<div class="goods_con clearfix">
+			<div class="goods_banner fl"><img src="{%static fruit.goods_list_pic%}"></div>
+			<ul class="goods_list fl">
+				{%for good in fruit_four%}
+				<li>
+					<h4><a href="{%url 'main:detail' good.id%}">{{good.goods_name}}</a></h4>
+					<a href="{%url 'main:detail' good.id%}"><img src="{%static good.goods_pic_url%}"></a>
+					<div class="prize">¥ {{good.goods_price}}</div>
+				</li>
+				{%endfor%}
+			</ul>
+		</div>
+	</div>
+
+
+	<div class="list_model">
+		<div class="list_title clearfix">
+			<h3 class="fl" id="model02">{{seafood.goods_list_name}}</h3>
+			<div class="subtitle fl">
+				<span>|</span>
+				<!-- {%for name in fruit_show%}
+				<a href="{%url 'main:detail' name.id%}">{{name.goods_name}}</a>
+				{%endfor%} -->
+				<a href="#">河虾</a>
+				<a href="#">扇贝</a>				
+			</div>
+			<a href="{%url 'main:list' fruit.id%}" class="goods_more fr">查看更多 ></a>
+		</div>
+
+		<div class="goods_con clearfix">
+			<div class="goods_banner fl"><img src="{%static seafood.goods_list_pic%}"></div>
+			<ul class="goods_list fl">
+			<!-- {%for good in seafood_four%}
+				<li>
+					<h4><a href="{%url 'main:detail' good.id%}">{{good.goods_name}}</a></h4>
+					<a href="{%url 'main:detail' good.id%}"><img src="{%static good.goods_pic_url%}"></a>
+					<div class="prize">¥ {{good.goods_price}}</div>
+				</li>
+				{%endfor%} -->
+
+				<li>
+					<h4><a href="#">青岛野生海捕大青虾</a></h4>
+					<a href="#"><img src="{%static 'text/images/goods/goods018.jpg'%}"></a>
+					<div class="prize">¥ 48.00</div>
+				</li>
+				<li>
+					<h4><a href="#">扇贝</a></h4>
+					<a href="#"><img src="{%static 'text/images/goods/goods019.jpg'%}"></a>
+					<div class="prize">¥ 46.00</div>
+				</li>
+				<li>
+					<h4><a href="#">冷冻秋刀鱼</a></h4>
+					<a href="#"><img src="{%static 'text/images/goods/goods020.jpg'%}"></a>
+					<div class="prize">¥ 19.00</div>
+				</li>
+				<li>
+					<h4><a href="#">基围虾</a></h4>
+					<a href="#"><img src="{%static 'text/images/goods/goods021.jpg'%}"></a>
+					<div class="prize">¥ 25.00</div>
+				</li>
+			</ul>
+		</div>
+	</div>
+
+	<div class="list_model">
+		<div class="list_title clearfix">
+			<h3 class="fl" id="model03">{{meet.goods_list_name}}</h3>
+			<div class="subtitle fl">
+				<span>|</span>
+				<!-- {%for name in meet_show%}
+				<a href="{%url 'main:detail' name.id%}">{{name.goods_name}}</a>
+				{%endfor%} -->
+				<a href="">澳洲牛肉</a>
+				<a href="">乌克兰大白猪</a>
+			</div>
+			<a href="{%url 'main:list' meet.id%}" class="goods_more fr">查看更多 ></a>
+		</div>
+
+		<div class="goods_con clearfix">
+			<div class="goods_banner fl"><img src="{%static meet.goods_list_pic%}"></div>
+			<ul class="goods_list fl">
+				<!-- {%for good in seafood_four%}
+				<li>
+					<h4><a href="{%url 'main:detail' good.id%}">{{good.goods_name}}</a></h4>
+					<a href="{%url 'main:detail' good.id%}"><img src="{%static good.goods_pic_url%}"></a>
+					<div class="prize">¥ {{good.goods_price}}</div>
+				</li>
+				{%endfor%} -->
+
+				<li>
+					<h4><a href="#">万年豚有机土猪精</a></h4>
+					<a href="#"><img src="{%static 'text/images/goods/goods022.png'%}"></a>
+					<div class="prize">¥ 38.00</div>
+				</li>
+				<li>
+					<h4><a href="#">维多利亚葡萄</a></h4>
+					<a href="#"><img src="{%static 'text/images/goods/goods023.png'%}"></a>
+					<div class="prize">¥ 38.00</div>
+				</li>
+				<li>
+					<h4><a href="#">维多利亚葡萄</a></h4>
+					<a href="#"><img src="{%static 'text/images/goods/goods024.png'%}"></a>
+					<div class="prize">¥ 38.00</div>
+				</li>
+				<li>
+					<h4><a href="#">维多利亚葡萄</a></h4>
+					<a href="#"><img src="{%static 'text/images/goods/goods025.png'%}"></a>
+					<div class="prize">¥ 38.00</div>
+				</li>
+			</ul>
+		</div>
+	</div>
+
+	<div class="list_model">
+		<div class="list_title clearfix">
+			<h3 class="fl" id="model04">{{egg.goods_list_name}}</h3>
+			<div class="subtitle fl">
+				<span>|</span>
+				<!-- {%for name in egg_show%}
+				<a href="{%url 'main:detail' name.id%}">{{name.goods_name}}</a>
+				{%endfor%} -->
+				<a href="#">鲜芒</a>
+				<a href="#">加州提子</a>
+				<a href="#">亚马逊牛油果</a>
+			</div>
+			<a href="{%url 'main:list' egg.id%}" class="goods_more fr">查看更多 ></a>
+		</div>
+
+		<div class="goods_con clearfix">
+			<div class="goods_banner fl"><img src="{%static egg.goods_list_pic%}"></div>
+			<ul class="goods_list fl">
+			<!-- {%for good in egg_four%}
+				<li>
+					<h4><a href="{%url 'main:detail' good.id%}">{{good.goods_name}}</a></h4>
+					<a href="{%url 'main:detail' good.id%}"><img src="{%static good.goods_pic_url%}"></a>
+					<div class="prize">¥ {{good.goods_price}}</div>
+				</li>
+				{%endfor%} -->
+
+				<li>
+					<h4><a href="#">维多利亚葡萄</a></h4>
+					<a href="#"><img src="{%static 'text/images/goods/goods026.png'%}"></a>
+					<div class="prize">¥ 38.00</div>
+				</li>
+				<li>
+					<h4><a href="#">维多利亚葡萄</a></h4>
+					<a href="#"><img src="{%static 'text/images/goods/goods027.png'%}"></a>
+					<div class="prize">¥ 38.00</div>
+				</li>
+				<li>
+					<h4><a href="#">维多利亚葡萄</a></h4>
+					<a href="#"><img src="{%static 'text/images/goods/goods028.png'%}"></a>
+					<div class="prize">¥ 38.00</div>
+				</li>
+				<li>
+					<h4><a href="#">维多利亚葡萄</a></h4>
+					<a href="#"><img src="{%static 'text/images/goods/goods029.png'%}"></a>
+					<div class="prize">¥ 38.00</div>
+				</li>
+			</ul>
+		</div>
+	</div>
+
+	<div class="list_model">
+		<div class="list_title clearfix">
+			<h3 class="fl" id="model05">{{vegetables.goods_list_name}}</h3>
+			<div class="subtitle fl">
+				<span>|</span>
+				<!-- {%for name in vegetables_show%}
+				<a href="{%url 'main:detail' name.id%}">{{name.goods_name}}</a>
+				{%endfor%} -->
+				<a href="#">鲜芒</a>
+				<a href="#">加州提子</a>
+				<a href="#">亚马逊牛油果</a>
+			</div>
+			<a href="{%url 'main:list' vegetables.id%}" class="goods_more fr">查看更多 ></a>
+		</div>
+
+		<div class="goods_con clearfix">
+			<div class="goods_banner fl"><img src="{%static vegetables.goods_list_pic%}"></div>
+			<ul class="goods_list fl">
+				<!-- {%for good in vegetables_four%}
+				<li>
+					<h4><a href="{%url 'main:detail' good.id%}">{{good.goods_name}}</a></h4>
+					<a href="{%url 'main:detail' good.id%}"><img src="{%static good.goods_pic_url%}"></a>
+					<div class="prize">¥ {{good.goods_price}}</div>
+				</li>
+				{%endfor%} -->
+				<li>
+					<h4><a href="#">维多利亚葡萄维多利亚葡萄维多利亚葡萄维多利亚葡萄</a></h4>
+					<a href="#"><img src="{%static 'text/images/goods/goods040.png'%}"></a>
+					<div class="prize">¥ 38.00</div>
+				</li>
+				<li>
+					<h4><a href="#">维多利亚葡萄</a></h4>
+					<a href="#"><img src="{%static 'text/images/goods/goods041.png'%}"></a>
+					<div class="prize">¥ 38.00</div>
+				</li>
+				<li>
+					<h4><a href="#">维多利亚葡萄</a></h4>
+					<a href="#"><img src="{%static 'text/images/goods/goods042.png'%}"></a>
+					<div class="prize">¥ 38.00</div>
+				</li>
+				<li>
+					<h4><a href="#">维多利亚葡萄</a></h4>
+					<a href="#"><img src="{%static 'text/images/goods/goods043.png'%}"></a>
+					<div class="prize">¥ 38.00</div>
+				</li>
+			</ul>
+		</div>
+	</div>
+
+	<div class="list_model">
+		<div class="list_title clearfix">
+			<h3 class="fl" id="model06">{{egg.goods_list_name}}</h3>
+			<div class="subtitle fl">
+				<span>|</span>
+				<!-- {%for name in ice_show%}
+				<a href="{%url 'main:detail' name.id%}">{{name.goods_name}}</a>
+				{%endfor%} -->
+				<a href="#">鲜芒</a>
+				<a href="#">加州提子</a>
+				<a href="#">亚马逊牛油果</a>
+			</div>
+			<a href="{%url 'main:list' ice.id%}" class="goods_more fr">查看更多 ></a>
+		</div>
+
+		<div class="goods_con clearfix">
+			<div class="goods_banner fl"><img src="{%static ice.goods_list_pic%}"></div>
+			<ul class="goods_list fl">
+				<!-- {%for good in ice_four%}
+				<li>
+					<h4><a href="{%url 'main:detail' good.id%}">{{good.goods_name}}</a></h4>
+					<a href="{%url 'main:detail' good.id%}"><img src="{%static good.goods_pic_url%}"></a>
+					<div class="prize">¥ {{good.goods_price}}</div>
+				</li>
+				{%endfor%} -->
+				<li>
+					<h4><a href="#">维多利亚葡萄维多利亚葡萄维多利亚葡萄维多利亚葡萄</a></h4>
+					<a href="#"><img src="{%static 'text/images/goods/goods044.png'%}"></a>
+					<div class="prize">¥ 38.00</div>
+				</li>
+				<li>
+					<h4><a href="#">维多利亚葡萄</a></h4>
+					<a href="#"><img src="{%static 'text/images/goods/goods045.png'%}"></a>
+					<div class="prize">¥ 38.00</div>
+				</li>
+				<li>
+					<h4><a href="#">维多利亚葡萄</a></h4>
+					<a href="#"><img src="{%static 'text/images/goods/goods046.png'%}"></a>
+					<div class="prize">¥ 38.00</div>
+				</li>
+				<li>
+					<h4><a href="#">维多利亚葡萄</a></h4>
+					<a href="#"><img src="{%static 'text/images/goods/goods047.png'%}"></a>
+					<div class="prize">¥ 38.00</div>
+				</li>
+			</ul>
+		</div>
+	</div>
+{%endblock left%}
+{%endblock content%}
+
